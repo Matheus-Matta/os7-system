@@ -12,7 +12,9 @@ __pycache__/
 *.db
 
 # Media and static files
-/media
+/media/
+*/media/
+*/media/*
 /staticfiles
 /static_root
 /media_root
