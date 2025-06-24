@@ -1,0 +1,73 @@
+{% load static %}
+<header id="inicio" class="nav-header header-layout1 mt-4 ">
+    <div class="header-navbar-logo pt-4 d-flex justify-content-center align-itens-center">
+        <a href="#inicio"><img width="180" src="{{ request.config.logo.url }}" alt="logo"></a>
+    </div>
+    <div>
+        <div class="header-top p-0 m-0">
+            <div class="container">
+                <div class="row justify-content-center justify-content-lg-between align-items-center gy-2">
+                    <div class="col-auto d-none d-lg-block">
+                        <div class="header-links">
+                            <ul>
+                                <li><i class="fas fa-envelope"></i><a href="mailto:{{ request.config.email }}">{{ request.config.email }}</a></li>
+                                <li><i class="fas fa-map-marker-alt"></i>{{ request.config.address }}</li>
+                                <li><i class="fas fa-clock"></i>{{ request.config.business_hours }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="header-links ps-0">
+                            <ul>
+                                <li>
+                                    <div class="">
+                                        <a target="_blank" rel="noopener noreferrer" href="{{ request.config.instagram }}"><i class="fab fa-instagram me-2"></i></a>
+                                        <a target="_blank" rel="noopener noreferrer" href="{{ request.config.whatsapp }}"><i class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="bg-transparent">
+            <!-- Área do Menu Principal -->
+            <div class="menu-area">
+    
+                <div class="container text-white">
+                    <div class="row align-items-center justify-content-lg-start justify-content-between">
+                        <div class="col-auto">
+                            <nav class="main-menu d-none d-lg-inline-block">
+                                <ul>
+                                    <li><a class="text-white" href="#inicio">Início</a></li>
+                                    <li><a class="text-white" href="#sobre">Sobre Nós</a></li>
+                                    <li><a class="text-white" href="#servicos">Serviços</a></li>
+                                    <li><a class="text-white" href="#projetos">Projetos</a></li>
+                                    <li><a class="text-white" href="#blog">Blog</a></li>
+                                    <li><a class="text-white" href="#paginas">Páginas</a></li>
+                                    <li><a class="text-white" href="#contato">Contato</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-auto ms-auto d-xl-block d-none">
+                            <div class="navbar-right-desc">
+                                <img class="text-dark" src="{% static 'assets/img/icon/chat.svg' %}" alt="chat">
+                                <div class="navbar-right-desc-details ">
+                                    <h6 class="title text-white">Precisa de ajuda?</h6>
+                                    <a class="link text-white" href="tel:+{{ request.config.phone }}">{{ request.config.phone }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% load static %}
+
+

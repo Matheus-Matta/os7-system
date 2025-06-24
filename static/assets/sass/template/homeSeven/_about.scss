@@ -1,0 +1,14 @@
+/* About Css Start */
+.positioned-thumb {
+    position: absolute;
+    inset-inline-start: 24px;
+    inset-block-start: 0;
+    height: 100%;
+    width: 49%;
+}
+.about-content, .about-data {
+    @media (max-width: 991px) {
+        padding: 0 !important; 
+    }
+}
+/* About Css End */

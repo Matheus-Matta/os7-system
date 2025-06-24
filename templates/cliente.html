@@ -1,0 +1,67 @@
+{% load static %}
+
+<div class="client-bg-area" style="background-image: url({% static 'assets/img/bg-cliente.png' %});">
+    <!--==============================
+    Formulário de Solicitação  
+    ==============================-->
+    <div class="appointment-area-1 overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="appointment-form-wrap bg-theme">
+                        <div class="title-area">
+                            <span class="sub-title text-white">Envie sua solicitação</span>
+                            <h2 class="sec-title text-white">Loja Completa de Blindagem Automotiva OS7</h2>
+                        </div>
+                        <form method="POST" action="" class="appointment-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control style-border2" name="name" placeholder="Seu Nome">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control style-border2" name="email" placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control style-border2" name="number" placeholder="Telefone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="subject" class="form-select style-border2">
+                                            <option value="" disabled selected hidden>Escolha um serviço</option>
+                                            <option value="Blindagem">Blindagem Automotiva</option>
+                                            <option value="Vidros Delaminados">Reparo de Vidros</option>
+                                            <option value="Reblindagem">Reblindagem</option>
+                                            <option value="Infiltracao">Infiltração de Água e Vento</option>
+                                            <option value="Ruidos">Eliminação de Ruídos Internos</option>
+                                            <option value="Amortecedores">Amortecedores de tampa traseira</option>
+
+                                        </select>
+                                        <i class="fas fa-angle-down text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12">
+                                <textarea name="message" placeholder="Descreva sua necessidade..." class="form-control style-border2"></textarea>
+                            </div>
+
+                            <div class="form-btn col-12">
+                                <button class="btn style3" type="submit">Solicitar Orçamento <i class="fas fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="appointment-thumb-1">
+            <img src="{% static 'assets/img/cliente.png' %}" alt="img">
+        </div>
+    </div>
+</div>

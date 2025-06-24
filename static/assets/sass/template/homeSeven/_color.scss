@@ -1,0 +1,79 @@
+/*  Colors */
+.text-neutral {
+    &-10 {
+        color: #FAFAFB !important;
+    }
+    &-20 {
+        color: #F5F6F7 !important;
+    }
+    &-30 {
+        color: #EBECEF !important;
+    }
+    &-40 {
+        color: #DFE0E4 !important;
+    }
+    &-50 {
+        color: #C1C4CC !important;
+    }
+    &-60 {
+        color: #B2B6BF !important;
+    }
+    &-70 {
+        color: #A6AAB5 !important;
+    }
+    &-80 {
+        color: #979CA8 !important;
+    }
+    &-90 {
+        color: #888E9C !important;
+    }
+    &-100 {
+        color: #FAFAFB !important;
+    }
+    &-200 {
+        color: #6A7283 !important;
+    }
+    &-300 {
+        color: #5B6477 !important;
+    }
+    &-400 {
+        color: #4F586D !important;
+    }
+    &-500 {
+        color: #404A60 !important;
+    }
+    &-600 {
+        color: #343E56 !important;
+    }
+    &-700 {
+        color: #222E48 !important;
+    }
+    &-800 {
+        color: #13203B !important;
+    }
+    &-900 {
+        color: #071431 !important;
+    }
+}
+
+.text-warning-600 {
+    color: #FFBE46;
+}
+
+/* Hover color Classes Start */
+.hover {
+    &-text-base {
+        &:hover {
+            color: var(--theme-color) !important;
+        }
+    }
+    &-text-white {
+        &:hover {
+            color: #fff !important;
+            svg path {
+                fill: #ffffff !important;
+            }
+        }
+    }
+}
+/* Colors End */

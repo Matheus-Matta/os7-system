@@ -1,0 +1,133 @@
+{% load static %}
+
+<div class="container">
+    <div class="footer-top-1 py-5  bg-theme d-flex align-items-center jus" style="background-image: url({% static 'assets/img/bg-cliente.png' %});">
+        
+        <!-- Logo -->
+        <div class="footer-logo">
+            <a href="#inicio">
+                <img width="100px" src="{{ request.config.logo.url }}" alt="Fixturbo">
+            </a>
+        </div>
+
+        <!-- Call Info -->
+        <div class="call-media-wrap">
+            <div class="icon">
+                <img src="{% static 'assets/img/icon/phone-1.svg' %}" alt="img">
+            </div>
+            <div class="media-body">
+                <h6 class="title text-white">Solicitar um Chamado:</h6>
+                <h4 class="link">
+                    <a class="text-white" href="tel:6295550129">{{ request.config.phone }}</a>
+                </h4>
+            </div>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="social-btn">
+            <a href="{{ request.config.whatsapp }}"><i class="fab fa-whatsapp"></i></a>
+            <a href="{{ request.config.instagram }}"><i class="fab fa-instagram"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer-wrapper footer-layout1" style="background-image: url({% static 'assets/img/bg-footer.png' %});">
+    <div class="container">
+        <div class="widget-area">
+            <div class="row justify-content-between">
+                <!-- Menu: Company -->
+                <div class="col-md-6 col-xl-auto">
+                    <div class="widget widget_nav_menu footer-widget">
+                        <h3 class="widget_title">Empresa</h3>
+                        <div class="menu-all-pages-container">
+                            <ul class="menu">
+                                <li><a href="#inicio">Início</a></li>
+                                <li><a href="#sobre">Sobre Nós</a></li>
+                                <li><a href="#servicos">Serviços</a></li>
+                                <li><a href="#contato">Contato</a></li>
+                                <li><a href="#duvidas">Dúvidas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu: Services -->
+                <div class="col-md-6 col-xl-auto">
+                    <div class="widget widget_nav_menu footer-widget">
+                        <h3 class="widget_title">Serviços</h3>
+                        <div class="menu-all-pages-container">
+                            <ul class="menu">
+                                <li><a href="#servicos">Blindagem e Manutenção</a></li>
+                                <li><a href="#servicos">Vidros Delaminados</a></li>
+                                <li><a href="#servicos">Reblindagem</a></li>
+                                <li><a href="#servicos">Infiltração de Água e Vento</a></li>
+                                <li><a href="#servicos">Ruídos Internos</a></li>
+                                <li><a href="#servicos">Amortecedores de Tampa Traseira</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6 col-xl-auto">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">Contatos</h3>
+                        <div class="widget-contact">
+                            <p><i class="fas fa-phone-alt me-2"></i><a href="tel:{{ request.config.phone }}">{{ request.config.phone }}</a></p>
+                            <p><i class="fas fa-envelope me-2"></i><a href="mailto:{{ request.config.email }}">{{ request.config.email }}</a></p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i>{{ request.config.address }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-6 col-xl-auto">
+                    <div class="widget footer-widget widget-newsletter">
+                        <h3 class="widget_title">Suporte ao Cliente</h3>
+                        <p class="footer-text">
+                            Precisa de ajuda ou tem alguma dúvida? Envie seu e-mail abaixo que nossa equipe vai entrar em contato.
+                        </p>
+                        <p class="footer-text text-danger mb-50">
+                                Assim que possível entraremos em contato
+                        </p>
+                        <form class="newsletter-form">
+                            <div class="form-group">
+                                <input 
+                                    class="form-control" 
+                                    type="email" 
+                                    placeholder="Digite seu E-mail" 
+                                    required
+                                >
+                            </div>
+                            <button type="submit" class="btn">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <br>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé inferior -->
+    <div class="copyright-wrap">
+        <div class="container">
+            <div class="row gy-3 justify-content-md-between justify-content-center">
+                <div class="col-auto align-self-center">
+                    <p class="copyright-text text-center">
+                        © <a href="#">Grupo Os7</a> <script>document.write(new Date().getFullYear())</script> | Todos os Direitos Reservados
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <div class="footer-links">
+                        <a href="">Termos & Condições</a>
+                        <a href="">Política de Privacidade</a>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </div>
+</footer>

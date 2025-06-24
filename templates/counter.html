@@ -1,0 +1,81 @@
+{% load static %}
+
+<div class="counter-area-1 space-bottom">
+    <div class="container">
+        <div class="counter-wrap1">
+            <div class="row gx-0 align-items-center">
+                <div class="col-lg-6">
+                    <div class="counter-card-wrap">
+                        <div class="row gy-30 justify-content-between">
+                            <div class="col-sm-6 col-lg-auto">
+                                <div class="counter-card">                                        
+                                    <div class="media-body">
+                                        <h2 class="counter-card_number"><span class="counter-number">800</span>+</h2>
+                                        <p class="counter-card_text">Clientes Satisfeitos</p>
+                                    </div>
+                                    <div class="counter-card_icon">
+                                        <img src="{% static 'assets/img/icon/counter-icon_1-2.svg' %}" alt="icon">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-auto">
+                                <div class="counter-card">                                        
+                                    <div class="media-body">
+                                        <h2 class="counter-card_number"><span class="counter-number">10</span>+</h2>
+                                        <p class="counter-card_text">Profissionais OS7</p>
+                                    </div>
+                                    <div class="counter-card_icon">
+                                        <img src="{% static 'assets/img/icon/counter-icon_1-3.svg' %}" alt="icon">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-auto">
+                                <div class="counter-card">                                        
+                                    <div class="media-body">
+                                        <h2 class="counter-card_number"><span class="counter-number">200</span>+</h2>
+                                        <p class="counter-card_text">Projetos Executados</p>
+                                    </div>
+                                    <div class="counter-card_icon">
+                                        <img src="{% static 'assets/img/icon/counter-icon_1-4.svg' %}" alt="icon">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="counter-checklist-wrap" style="background-image: url({% static 'assets/img/bg-counter.jpeg' %}); background-size: cover; background-position: center;">
+                        <div class="checklist style-white mb-50">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Sua Blindadora Automotiva de Confiança</li>
+                                <li><i class="fas fa-check"></i>Excelência e Tecnologia OS7</li>
+                                <li><i class="fas fa-check"></i>Serviços de Blindagem de Alto Padrão</li>
+                                <li><i class="fas fa-check"></i>  
+                                    <a class="text-white" href="https://www.instagram.com/os7blindagemautomotiva/" target="_blank" rel="noopener noreferrer">
+                                        Nos siga no Instagram 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="call-media-wrap">
+                            <div class="icon">
+                                <img src="{% static 'assets/img/icon/phone-1.svg' %}" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <h6 class="title text-white">Solicite um Orçamento:</h6>
+                                <h4 class="link">
+                                    <a class="text-white" href="tel:{{ request.config.phone }}">{{ request.config.phone }}</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>  
+</div>

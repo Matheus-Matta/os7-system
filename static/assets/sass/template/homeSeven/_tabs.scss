@@ -1,0 +1,14 @@
+/* Listing Grid Layout Css Start */
+.custom-tabs {
+    .nav-link {
+        &:hover {
+            border-color: var(--theme-color) !important;
+        }
+        &.active {
+            background-color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            color: #fff !important;
+        }
+    }
+}
+/* Listing Grid Layout Css End */

@@ -1,0 +1,68 @@
+
+/* Background Colors */
+.bg-neutral {
+    &-10 {
+        background-color: #FAFAFB !important;
+    }
+    &-20 {
+        background-color: #F5F6F7 !important;
+    }
+    &-30 {
+        background-color: #EBECEF !important;
+    }
+    &-40 {
+        background-color: #DFE0E4 !important;
+    }
+    &-50 {
+        background-color: #C1C4CC !important;
+    }
+    &-60 {
+        background-color: #B2B6BF !important;
+    }
+    &-70 {
+        background-color: #A6AAB5 !important;
+    }
+    &-80 {
+        background-color: #979CA8 !important;
+    }
+    &-90 {
+        background-color: #888E9C !important;
+    }
+    &-100 {
+        background-color: #FAFAFB !important;
+    }
+    &-200 {
+        background-color: #6A7283 !important;
+    }
+    &-300 {
+        background-color: #5B6477 !important;
+    }
+    &-400 {
+        background-color: #4F586D !important;
+    }
+    &-500 {
+        background-color: #404A60 !important;
+    }
+    &-600 {
+        background-color: #343E56 !important;
+    }
+    &-700 {
+        background-color: #222E48 !important;
+    }
+    &-800 {
+        background-color: #13203B !important;
+    }
+    &-900 {
+        background-color: #071431 !important;
+    }
+}
+
+/* Hover color Classes Start */
+.hover {
+    &-bg-base {
+        &:hover {
+            background-color: var(--theme-color) !important;
+        }
+    }
+}
+/* Background Colors End */

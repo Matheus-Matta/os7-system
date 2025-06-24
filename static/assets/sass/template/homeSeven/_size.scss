@@ -1,0 +1,60 @@
+/* Size Css Start */
+.w {
+    &-34-px {
+        width: 34px;
+    }
+    &-48-px {
+        width: 48px;
+    }
+    &-40-px {
+        width: 40px;
+    }
+    &-56-px {
+        width: 56px;
+    }
+    &-64-px {
+        width: 64px;
+    }
+}
+
+// Height
+.h {
+    &-34-px {
+        height: 34px;
+    }
+    &-40-px {
+        height: 40px;
+    }
+    &-48-px {
+        height: 48px;
+    }
+    &-56-px {
+        height: 56px;
+    }
+    &-64-px {
+        height: 64px;
+    }
+}
+
+
+// Max Width
+.max-w {
+    &-490-px {
+        max-width: 490px;
+    }
+    &-536-px {
+        max-width: 536px;
+    }
+    &-505-px {
+        max-width: 505px;
+    }
+    &-636-px {
+        max-width: 636px;
+    }
+}
+.min-h {
+    &-240-px {
+        min-height: 240px;
+    }
+}
+/* Size Css End */

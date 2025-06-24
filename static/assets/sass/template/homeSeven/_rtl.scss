@@ -1,0 +1,26 @@
+/* Home seven rtl css start */
+[dir="rtl"] {
+    .fa-arrow-right:before {
+        content: "\f060";
+    }
+    .fa-arrow-left:before {
+        content: "\f061";
+    }
+    .arrow-end {
+        background-position: left center;
+    }
+    .form-select.arrow-end {
+        padding-inline-start: 8px !important;
+    }
+    .percentage {
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    .translate-middle-y {
+        -webkit-transform: translateY(-50%)!important;
+        -ms-transform: translateY(-50%)!important;
+        transform: scaleX(-1) translateY(-50%)!important;
+    }
+}
+
+/* Home seven rtl css End */

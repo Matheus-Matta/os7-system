@@ -1,0 +1,109 @@
+
+/* Border Colors */
+.focus {
+    &-border-0 {
+        &:focus {
+            border: 0 !important;
+        }
+    }
+}
+
+.border-neutral {
+    &-10 {
+        border-color: #FAFAFB !important;
+    }
+    &-20 {
+        border-color: #F5F6F7 !important;
+    }
+    &-30 {
+        border-color: #EBECEF !important;
+    }
+    &-40 {
+        border-color: #DFE0E4 !important;
+    }
+    &-50 {
+        border-color: #C1C4CC !important;
+    }
+    &-60 {
+        border-color: #B2B6BF !important;
+    }
+    &-70 {
+        border-color: #A6AAB5 !important;
+    }
+    &-80 {
+        border-color: #979CA8 !important;
+    }
+    &-90 {
+        border-color: #888E9C !important;
+    }
+    &-100 {
+        border-color: #FAFAFB !important;
+    }
+    &-200 {
+        border-color: #6A7283 !important;
+    }
+    &-300 {
+        border-color: #5B6477 !important;
+    }
+    &-400 {
+        border-color: #4F586D !important;
+    }
+    &-500 {
+        border-color: #404A60 !important;
+    }
+    &-600 {
+        border-color: #343E56 !important;
+    }
+    &-700 {
+        border-color: #222E48 !important;
+    }
+    &-800 {
+        border-color: #13203B !important;
+    }
+    &-900 {
+        border-color: #071431 !important;
+    }
+}
+
+.border {
+    &-base {
+        border-color: var(--theme-color) !important;
+    }
+    &-base-20 {
+        border-color: #e7082e33 !important;
+    }
+    &-white-50 {
+        border-color: #ffffff7d !important;
+    }
+    &-dashed {
+        border-style: dashed !important;
+    }
+}
+
+.hover {
+    &-border-base {
+        &:hover {
+            border-color: var(--theme-color) !important;
+        }
+    }
+    &-border-white {
+        &:hover {
+            border-color: #fff !important;
+        }
+    }
+}
+
+.focus {
+    &-border-base {
+        &:focus {
+            border-color: var(--theme-color) !important;
+        }
+    }
+    &-border-white {
+        &:focus {
+            border-color: #fff !important;
+        }
+    }
+}
+/* Border Colors End */
+

@@ -1,0 +1,137 @@
+/*-- Padding Left And Right --*/
+@for $i from 1 through $space-count {
+  .px-#{5 * $i} {
+    padding-right: 5px *$i;
+    padding-left: 5px *$i;
+  }
+}
+
+/*-- Padding Top And Bottom --*/
+@for $i from 1 through $space-count {
+  .py-#{5 * $i} {
+    padding-top: 5px *$i;
+    padding-bottom: 5px *$i;
+  }
+}
+
+/*-- Padding Top --*/
+@for $i from 1 through $space-count {
+  .pt-#{5 * $i} {
+    padding-top: 5px *$i;
+  }
+}
+
+/*-- Padding Bottom --*/
+@for $i from 1 through $space-count {
+  .pb-#{5 * $i} {
+    padding-bottom: 5px *$i;
+  }
+}
+
+/*-- Padding Left --*/
+@for $i from 1 through $space-count {
+  .pl-#{5 * $i} {
+    padding-inline-start: 5px *$i;
+  }
+}
+
+/*-- Padding Right --*/
+@for $i from 1 through $space-count {
+  .pr-#{5 * $i} {
+    padding-inline-end: 5px *$i;
+  }
+}
+
+.py-12 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.pb-32 {
+  padding-bottom: 32px;
+}
+
+.p-res-32 {
+  padding: unquote("clamp(1.25rem, -3.5873rem + 11.8343vw, 2rem)");
+}
+
+
+.p-12 {
+  padding: 12px;
+}
+
+.pb-60 {
+  padding-bottom: 60px;
+}
+
+.pe-70 {
+  padding-inline-end: 70px;
+}
+
+.pb-80 {
+  padding-bottom: 80px;
+}
+
+.pt-80 {
+  padding-top: 80px;
+}
+
+.py-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.pb-100 { 
+  padding-bottom: 100px;
+}
+.pb-105 {
+  padding-bottom: 105px;
+}
+.pt-105 {
+  padding-top: 105px;
+}
+.pt-95 {
+  padding-top: 95px;
+}
+
+
+.py-14 {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.pt-60 {
+  padding-top: 60px;
+}
+
+
+
+.py-res-120 {
+  padding-top: unquote("clamp(3.75rem, -3.5873rem + 11.8343vw, 7.5rem)");
+  padding-bottom: unquote("clamp(3.75rem, -3.5873rem + 11.8343vw, 7.5rem)");
+}
+
+.ps-res-110 {
+  padding-inline-start: unquote("clamp(3.75rem, -3.5873rem + 11.8343vw, 6.875rem)");
+}
+
+.pt-res-110 {
+  padding-block-start: unquote("clamp(3.75rem, -3.5873rem + 11.8343vw, 6.875rem)");
+}
+
+.pb-res-270 {
+  padding-block-end: unquote("clamp(7.5rem, -20.6016rem + 37.5vw, 16.875rem)");
+}
+
+.ps-res-220-px {
+  @media (min-width: 991px) {
+    padding-inline-start: unquote("clamp(7.5rem, -11.2344rem + 25vw, 13.75rem)");
+  }
+}
+
+.pb-115-px {
+  padding-block-end: 115px;
+}
+
+.pe-156-px {
+  padding-inline-end: 156px;
+}

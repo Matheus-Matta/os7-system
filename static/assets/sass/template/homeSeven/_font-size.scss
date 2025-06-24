@@ -1,0 +1,41 @@
+/* Font size css start */
+
+.display {
+    &-2 {
+        font-size: unquote("clamp(2.5rem, -2.8899rem + 9.1456vw, 5.25rem)");
+        line-height: 120%;
+    }
+    &-4 {
+        font-size: unquote("clamp(2rem, -10.7394rem + 17vw, 3.5rem)");
+        line-height: 120%;
+    }
+}
+
+.text {
+    &-xs {
+        font-size: 12px;
+    }
+    &-sm {
+        font-size: 14px;
+    }
+    &-md {
+        font-size: 16px;
+    }
+    &-lg {
+        font-size: 18px;
+    }
+    &-xl {
+        font-size: 20px;
+    }
+    &-2xl {
+        font-size: 24px;
+    }
+    &-3xl {
+        font-size: unquote("clamp(1.25rem, 0.5569rem + 1.444vw, 2rem)") !important; /* 32px */
+    }
+    &-4xl {
+        font-size: unquote("clamp(1.25rem, 0.5569rem + 1.444vw, 2.25rem)") !important; /* 36px */
+    }
+    
+}
+/* Font size css End */

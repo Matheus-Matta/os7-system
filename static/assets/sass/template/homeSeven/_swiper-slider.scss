@@ -1,0 +1,13 @@
+/* Swiper slider css start */
+.swiper-horizontal>.swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
+    width: 20% !important;
+    background-color: #ffffff36;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 32px;
+    height: 1px;
+}
+.swiper-scrollbar-drag {
+    background: #ffffff;
+}
+/* Swiper slider css End */
