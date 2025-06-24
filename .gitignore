@@ -1,0 +1,64 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migrations
+*/migrations/
+!*/migrations/__init__.py
+
+# Database
+*.sqlite3
+*.db
+
+# Media and static files
+/media
+/staticfiles
+/static_root
+/media_root
+
+# VSCode
+.vscode/
+
+# Environment
+.env
+*.env
+*.env.*
+
+# Python virtualenv
+venv/
+ENV/
+env/
+.venv/
+.Python
+
+# Logs
+*.log
+
+# Coverage and testing
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+nosetests.xml
+testdb.sqlite3
+.junit.xml
+
+# mypy
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# pyright
+.pyright/
+
+# PyCharm
+.idea/
+
+# macOS / Linux
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+docker-compose.override.yml

@@ -5122,7 +5122,7 @@ ul.wp-block-latest-posts li:last-child {
 }
 
 .main-menu a:hover {
-  color: var(--color-primary-950);
+  color: var(--title-color);
 }
 
 .main-menu > ul > li {
@@ -5616,6 +5616,10 @@ ul.wp-block-latest-posts li:last-child {
   background: var(--white-color);
 }
 
+.header-layout1 .sticky-wrapper.sticky .header-navbar-logo {
+  margin-top: 25px;
+}
+
 .header-layout1 .header-top {
   background: transparent;
   padding: 12px 0;
@@ -5643,9 +5647,6 @@ ul.wp-block-latest-posts li:last-child {
   padding-left: 60px;
   position: absolute;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .header-layout1 .menu-area {
@@ -5762,21 +5763,21 @@ ul.wp-block-latest-posts li:last-child {
 
 /* Large devices */
 @media (max-width: 1199px) {
-  .logo-bg {
+  .header-layout1 .menu-area .logo-bg {
     display: none;
   }
-  .header-navbar-logo {
+  .header-layout1 .header-navbar-logo {
     display: none;
   }
   .header-layout1 .menu-area .main-menu {
     padding-left: 0;
   }
-  .header-logo {
+  .header-layout1 .header-logo {
     background: var(--theme-color);
     padding: 25px;
     position: relative;
   }
-  .header-logo:after {
+  .header-layout1 .header-logo:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -5794,10 +5795,10 @@ ul.wp-block-latest-posts li:last-child {
   .header-layout1 .sticky-wrapper {
     padding: 0px 20px 0;
   }
-  .header-navbar-logo {
+  .header-layout1 .header-navbar-logo {
     margin-top: 0;
   }
-  .header-navbar-logo img {
+  .header-layout1 .header-navbar-logo img {
     max-width: none;
   }
   .header-layout1 .sticky-wrapper.sticky {
@@ -5824,7 +5825,7 @@ ul.wp-block-latest-posts li:last-child {
   padding: 15px 0;
 }
 
-.header-navbar-logo {
+.header-layout2 .header-navbar-logo {
   display: none;
 }
 
@@ -15443,9 +15444,7 @@ li.trackback {
 .hover-text-white:hover svg path {
   fill: #ffffff !important;
 }
-.hover-text-link:hover {
-  color: # !important;
-}
+
 /* Colors End */
 /* Background Colors */
 .bg-neutral-10 {

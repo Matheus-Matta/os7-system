@@ -25,8 +25,11 @@
 
         <!-- Redes Sociais -->
         <div class="social-btn">
-            <a href="{{ request.config.whatsapp }}"><i class="fab fa-whatsapp"></i></a>
-            <a href="{{ request.config.instagram }}"><i class="fab fa-instagram"></i></a>
+            {% if request.config.whatsapp %}<a href="{{ request.config.whatsapp }}"><i class="fab fa-whatsapp"></i></a>{% endif %}
+            {% if request.config.instagram %}<a href="{{ request.config.instagram }}"><i class="fab fa-instagram"></i></a>{% endif %}
+            {% if request.config.facebook %}<a href="{{ request.config.facebook }}"><i class="fab fa-facebook-f"></i></a>{% endif %}
+            {% if request.config.twitter %}<a href="{{ request.config.twitter }}"><i class="fab fa-twitter"></i></a>{% endif %}
+            {% if request.config.linkedin %}<a href="{{ request.config.linkedin }}"><i class="fab fa-linkedin-in"></i></a>{% endif %}
         </div>
 
     </div>
