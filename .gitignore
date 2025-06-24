@@ -4,7 +4,11 @@ __pycache__/
 *$py.class
 
 # Django migrations
+/migrations
+*/migrations
+migrations/
 */migrations/
+*/migrations/*
 !*/migrations/__init__.py
 
 # Database
