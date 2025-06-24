@@ -28,8 +28,6 @@ migrations/
 
 # Environment
 .env
-*.env
-*.env.*
 
 # Python virtualenv
 venv/
