@@ -1,18 +1,22 @@
-FROM python:3.11-slim
+# Base Python
+FROM python:3.12-slim
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
+# Define diretório da aplicação
 WORKDIR /app
 
+# Copia dependências
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copia o restante do projeto
 COPY . .
 
-# Coletar arquivos estáticos
-RUN python manage.py collectstatic --noinput
+# Copia e executa o script de entrada
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Realizar as migrações do banco de dados
-RUN python manage.py makemigrations --noinput
-RUN python manage.py migrate --noinput
+# Expõe a porta usada pelo Gunicorn
+EXPOSE 8000
+
+# Comando padrão
+ENTRYPOINT ["/entrypoint.sh"]

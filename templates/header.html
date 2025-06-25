@@ -2,7 +2,7 @@
 <div class="mobile-menu-wrapper">
     <div class="mobile-menu-area">
         <div class="mobile-logo">
-            <a href="#inicio"><img width="50%" src="{{ request.config.logo.url }}" alt="Logo"></a>
+            <a href="#inicio"><img width="50%" src="{% if request.config.logo %}{{ request.config.logo.url }}{% endif %}" alt="Logo"></a>
             <button class="menu-toggle"><i class="fa fa-times"></i></button>
         </div>
         <div class="mobile-menu">
@@ -52,13 +52,13 @@
     <div class="sticky-wrapper">
         <div class="menu-area">
             <div class="header-navbar-logo">
-                <a href="#inicio"><img src="{{ request.config.logo.url }}" width="80" alt="logo"></a>
+                <a href="#inicio"><img src="{% if request.config.logo %}{{ request.config.logo.url }}{% endif %}" width="80" alt="logo"></a>
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-lg-start justify-content-between">
                     <div class="col-auto d-xl-none d-block">
                         <div class="header-logo">
-                            <a href="#inicio"><img src="{{ request.config.logo.url }}" width="80" alt="logo"></a>
+                            <a href="#inicio"><img src="{% if request.config.logo %}{{ request.config.logo.url }}{% endif %}" width="80" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-auto">

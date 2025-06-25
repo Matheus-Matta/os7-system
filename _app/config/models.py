@@ -95,7 +95,7 @@ def create_default_site_config(sender, **kwargs):
     # Cria configuração padrão se não existir nenhuma
     if SiteConfig.objects.count() == 0:
         SiteConfig.objects.create(
-            config_name=_("Configuração Padrão do Site (Ativa)"),
+            config_name=_("Configuração Padrão"),
             is_active=True,
             email="contato@exemplo.com",
             phone="(00) 0000-0000",

@@ -23,17 +23,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
 SECRET_KEY = os.getenv('SECRET_KEY', 'chave-padrao-insegura')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
-
+CORS_ALLOWED_ORIGINS = os.getenv('ORIGINS', '').split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('ORIGINS', '').split(',')
 
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'corsheaders',
     'modeltranslation',
     'unfold',
@@ -65,9 +67,9 @@ MY_APPS = [
 INSTALLED_APPS += MY_APPS
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
@@ -103,13 +105,15 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # WhiteNoise settings para evitar cache
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Defina a URL base para servir arquivos de mídia 
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/' )
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
@@ -179,7 +183,7 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -244,9 +248,4 @@ UNFOLD = {
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = ["unfold_crispy"]
 CRISPY_TEMPLATE_PACK          = "unfold_crispy"
-
-if not DEBUG:
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    

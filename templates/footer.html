@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="footer-logo">
             <a href="#inicio">
-                <img width="100px" src="{{ request.config.logo.url }}" alt="Fixturbo">
+                <img width="100px" src="{% if request.config.logo %}{{ request.config.logo.url }}{% endif %}" alt="Fixturbo">
             </a>
         </div>
 
