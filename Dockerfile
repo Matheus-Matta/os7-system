@@ -18,5 +18,7 @@ RUN chmod +x /entrypoint.sh
 # Expõe a porta usada pelo Gunicorn
 EXPOSE 8000
 
+RUN apt install -y netcat
+
 # Comando padrão
 ENTRYPOINT ["/entrypoint.sh"]
