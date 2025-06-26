@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-# aguarda o banco ficar disponível
-if [ "$DATABASE_URL" ]; then
-  until psql "$DATABASE_URL" -c '\l'; do
-    >&2 echo "Postgres não disponível - aguardando..."
-    sleep 1
+if [ -n "$DB_HOST" ]; then
+  echo "⏳ Aguardando Postgres em $DB_HOST:$DB_PORT..."
+  until PGPASSWORD="$DB_PASSWORD" psql \
+    -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -c '\l' &> /dev/null; do
+    >&2 echo "Postgres não disponível – aguardando 2s..."
+    sleep 2
   done
+  echo "✅ Postgres disponível!"
 fi
 
 # aplica migrações, coleta static e inicia Gunicorn
