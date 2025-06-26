@@ -1,35 +1,37 @@
 version: '3.8'
-services:
-  db:
-    image: postgres:14
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    env_file: .env
-    restart: always
 
+services:
   web:
     build: .
-    command: /entrypoint.sh
+    command: >
+      sh -c "
+        python manage.py collectstatic --noinput &&
+        exec gunicorn config.wsgi:application --bind 0.0.0.0:8000
+      "
     volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-    env_file: .env
+      - ./static:/home/app/web/staticfiles
+      - ./media:/home/app/web/mediafiles
+    expose:
+      - 8000
+    env_file:
+      - .env
     depends_on:
       - db
-
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "8000:80"
+  db:
+    image: postgres:15
     volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./staticfiles:/home/app/web/staticfiles
+      - ./media:/home/app/web/mediafiles
+    ports:
+      - 1337:80
     depends_on:
       - web
-    restart: always
 
 volumes:
   postgres_data:
-  static_volume:
-  media_volume:

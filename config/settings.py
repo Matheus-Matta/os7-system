@@ -61,7 +61,6 @@ MY_APPS = [
     '_app',
     '_app.siteconfig',
     '_app.analytics',
-
 ]
 
 INSTALLED_APPS += MY_APPS
@@ -113,7 +112,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Defina a URL base para servir arquivos de mídia 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

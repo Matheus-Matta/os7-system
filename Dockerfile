@@ -3,12 +3,13 @@
 ####################################
 FROM python:3.11.4-slim-bullseye AS builder
 
+# evita .pyc e buffer de saída
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 WORKDIR /usr/src/app
 
-# instala compiladores e libs para compilar psycopg2 e pysqlite3
+# instala compiladores e libs para psycopg2 e pysqlite3 (se precisar)
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       gcc \
@@ -18,53 +19,59 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # gera as wheels das dependências
-COPY requirements.txt .
+COPY requirements.txt .  
 RUN pip install --upgrade pip wheel \
  && pip wheel --no-cache-dir --wheel-dir /usr/src/app/wheels -r requirements.txt
 
 
-####################################
-# 2) STAGE: runtime
-####################################
-FROM python:3.11.4-slim-bullseye
+#########
+# FINAL #
+#########
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    HOME=/home/app \
-    APP_HOME=/home/app/web
+# pull official base image
+FROM python:3.11.4-slim-buster
 
-# cria usuário não-root
-RUN mkdir -p $APP_HOME \
- && addgroup --system app \
+# create directory for the app user
+RUN mkdir -p /home/app
+
+# create the app user
+RUN addgroup --system app \
  && adduser --system --ingroup app app
+
+# define diretórios de trabalho
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+
+RUN mkdir -p $APP_HOME/staticfiles \
+ && mkdir -p $APP_HOME/mediafiles
 
 WORKDIR $APP_HOME
 
-# instala runtime libs (inclui sqlite3 >=3.31)
+# install runtime dependencies
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-      sqlite3 \
       netcat \
-      libpq5 \
-      postgresql-client \
  && rm -rf /var/lib/apt/lists/*
 
-# instala dependências Python pré-compiladas
+# copia e instala as wheels geradas no builder
 COPY --from=builder /usr/src/app/wheels /wheels
-COPY requirements.txt .
+COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip \
  && pip install --no-cache /wheels/*
 
-# prepara entrypoint
+# copia e prepara o entrypoint
 COPY entrypoint.sh .
-RUN sed -i 's/\r$//g' entrypoint.sh \
- && chmod +x entrypoint.sh
+RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh \
+ && chmod +x $APP_HOME/entrypoint.sh
 
-# copia o restante do código
+# copia todo o código da aplicação
 COPY . .
 
-# aplica dono não-root e troca de usuário
+# ajusta permissões
 RUN chown -R app:app $APP_HOME
+
+# executa como usuário não-root
 USER app
 
-ENTRYPOINT ["./entrypoint.sh"]
+# entrypoint final
+ENTRYPOINT ["sh", "/home/app/web/entrypoint.sh"]

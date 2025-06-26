@@ -1,5 +1,5 @@
 
-from _app.config.models import SiteConfig
+from _app.siteconfig.models import SiteConfig
 
 def config(request):
     cfg = SiteConfig.objects.filter(is_active=True).first()
