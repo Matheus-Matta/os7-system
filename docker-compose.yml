@@ -9,7 +9,7 @@ services:
 
   web:
     build: .
-    command: /entrypoint.sh
+    command: sh /entrypoint.sh
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media

@@ -64,6 +64,3 @@ COPY . .
 # ajusta permissões e troca para usuário não-root
 RUN chown -R app:app $APP_HOME
 USER app
-
-# finalmente, dispara o entrypoint
-ENTRYPOINT ["sh", "entrypoint.sh"]
