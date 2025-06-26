@@ -10,7 +10,7 @@ if [ "$DATABASE_URL" ]; then
 fi
 
 # aplica migrações, coleta static e inicia Gunicorn
-python manage.py makemigrations --noinput
+python manage.py makemigrations siteconfig analytics  --noinput
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 

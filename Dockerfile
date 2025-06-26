@@ -66,4 +66,4 @@ RUN chown -R app:app $APP_HOME
 USER app
 
 # finalmente, dispara o entrypoint
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["sh", "entrypoint.sh"]

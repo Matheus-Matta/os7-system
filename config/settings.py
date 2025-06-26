@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 MY_APPS = [
     '_app',
-    '_app.config',
+    '_app.siteconfig',
     '_app.analytics',
 
 ]
