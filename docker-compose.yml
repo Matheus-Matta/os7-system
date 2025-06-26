@@ -38,8 +38,6 @@ services:
 
 volumes:
   postgres_data:
-  staticfiles:
-  media:
 
 networks:
   os7-net:
