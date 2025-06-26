@@ -45,6 +45,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        netcat \
        libpq5 \
+       postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # copia e instala as wheels
@@ -64,3 +65,6 @@ COPY . .
 # ajusta permissões e troca para usuário não-root
 RUN chown -R app:app $APP_HOME
 USER app
+
+# finalmente, dispara o entrypoint
+ENTRYPOINT ["sh", "entrypoint.sh"]
