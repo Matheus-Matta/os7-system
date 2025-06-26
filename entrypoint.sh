@@ -1,11 +1,10 @@
 #!/bin/sh
 
-echo "Aguardando banco de dados estar pronto..."
-
-# Testa conexão com o PostgreSQL
-while ! nc -z db 5432; do
+echo "Aguardando o banco subir..."
+until pg_isready -h db -p 5432 -U postgres; do
   sleep 1
 done
+
 
 echo "✅ Banco de dados pronto!"
 
