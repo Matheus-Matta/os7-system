@@ -4,7 +4,6 @@ services:
   web:
     build: .
     volumes:
-      - ./staticfiles:/app/staticfiles
       - ./media:/app/media
     env_file:
       - .env
@@ -39,6 +38,8 @@ services:
 
 volumes:
   postgres_data:
+  staticfiles:
+  media:
 
 networks:
   os7-net:

@@ -2,10 +2,14 @@
 
 echo "⏳ Aguardando banco de dados estar pronto..."
 
+
+
 # Testa conexão com o PostgreSQL
 while ! nc -z db 5432; do
   sleep 1
 done
+
+export DJANGO_SETTINGS_MODULE=config.settings   # ← aqui
 
 echo "✅ Banco de dados pronto!"
 
