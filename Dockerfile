@@ -43,6 +43,7 @@ WORKDIR $APP_HOME
 # instala só as libs de runtime
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+       sqlite3 \
        netcat \
        libpq5 \
        postgresql-client \
