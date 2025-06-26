@@ -1,24 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -e
 
-echo "⏳ Aguardando banco de dados estar pronto..."
+# aguarda o banco ficar disponível
+if [ "$DATABASE_URL" ]; then
+  until psql "$DATABASE_URL" -c '\l'; do
+    >&2 echo "Postgres não disponível - aguardando..."
+    sleep 1
+  done
+fi
 
-
-
-# Testa conexão com o PostgreSQL
-while ! nc -z db 5432; do
-  sleep 1
-done
-
-export DJANGO_SETTINGS_MODULE=config.settings   # ← aqui
-
-echo "✅ Banco de dados pronto!"
-
-echo "📦 Aplicando migrações..."
+# aplica migrações, coleta static e inicia Gunicorn
 python manage.py makemigrations --noinput
 python manage.py migrate --noinput
-
-echo "🎯 Coletando arquivos estáticos..."
 python manage.py collectstatic --noinput
 
-echo "🚀 Iniciando servidor Gunicorn..."
-exec gunicorn config.wsgi:application --bind 0.0.0.0:8000
+# executa gunicorn
+exec gunicorn config.wsgi:application \
+    --bind 0.0.0.0:8000 \
+    --workers 3 \
+    --reload

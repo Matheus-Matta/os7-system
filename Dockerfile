@@ -1,24 +1,44 @@
-# Base Python
-FROM python:3.12-slim
+# 1) STAGE: builder
+FROM python:3.11.4-slim-buster AS builder
 
-# Define diretório da aplicação
+# evita .pyc e buffer
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y netcat-openbsd
+# instala compiladores e libs para psycopg2, etc.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       build-essential \
+       libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copia dependências
+# copia apenas o requirements e gera as wheels
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip wheel \
+    && pip wheel --no-cache-dir --wheel-dir /app/wheels -r requirements.txt
 
-# Copia o restante do projeto
+# 2) STAGE: runtime
+FROM python:3.11.4-slim-buster
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# instala apenas runtime libs (sem build-tools)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       libpq5 \
+    && rm -rf /var/lib/apt/lists/*
+
+# copia as wheels pré-construídas e instala
+COPY --from=builder /app/wheels /wheels
+RUN pip install --no-cache-dir /wheels/*
+
+# copia o código da aplicação
 COPY . .
 
-# Copia e executa o script de entrada
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Expõe a porta usada pelo Gunicorn
-EXPOSE 8000
-
-# Comando padrão
-ENTRYPOINT ["/entrypoint.sh"]
+# entrypoint já cuida de migrações, collectstatic e gunicorn
+ENTRYPOINT ["/app/entrypoint.sh"]

@@ -1,46 +1,35 @@
-version: "3.9"
-
+version: '3.8'
 services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+    restart: always
+
   web:
     build: .
+    command: /entrypoint.sh
     volumes:
-      - ./media:/app/media
-    env_file:
-      - .env
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    env_file: .env
     depends_on:
       - db
-    networks:
-      - os7-net
 
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
     ports:
       - "8000:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./staticfiles:/static
-      - ./media:/media
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - web
-    networks:
-      - os7-net
-
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: os7db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: smvf5353
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - os7-net
+    restart: always
 
 volumes:
   postgres_data:
-  staticfiles:
-  media:
-
-networks:
-  os7-net:
-    driver: bridge
+  static_volume:
+  media_volume:

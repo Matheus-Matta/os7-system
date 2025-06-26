@@ -1,0 +1,70 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Python virtualenvs
+venv/
+ENV/
+env/
+.venv/
+.Python
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Database
+*.sqlite3
+*.db
+testdb.sqlite3
+
+# Django static & media
+/staticfiles/
+
+# Django migrations
+/migrations
+*/migrations
+migrations/
+*/migrations/
+*/migrations/*
+!*/migrations/__init__.py
+
+# Coverage & testing
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+nosetests.xml
+.junit.xml
+.pytest_cache/
+
+# Type checkers
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pyright/
+
+# Node / frontend
+node_modules/
+
+# IDEs / editors
+.vscode/
+.idea/
+
+# macOS / Linux
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+docker-compose.override.yml
