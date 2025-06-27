@@ -1,6 +1,3 @@
 FROM nginx:1.29-alpine
-COPY nginx.conf             /etc/nginx/nginx.conf
-COPY entrypoint.sh           /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-ENTRYPOINT ["/entrypoint.sh"]
