@@ -19,7 +19,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # gera as wheels das dependências
-COPY requirements.txt .  
+COPY requirements.txt .
 RUN pip install --upgrade pip wheel \
  && pip wheel --no-cache-dir --wheel-dir /usr/src/app/wheels -r requirements.txt
 
@@ -28,49 +28,50 @@ RUN pip install --upgrade pip wheel \
 # FINAL #
 #########
 
-# pull official base image
-FROM python:3.11.4-slim-buster
+# base Bullseye (SQLite ≥ 3.31, compatível com Django 5.2+)
+FROM python:3.11.4-slim-bullseye
 
-# create directory for the app user
-RUN mkdir -p /home/app
-
-# create the app user
-RUN addgroup --system app \
+# cria usuário e pastas
+RUN mkdir -p /home/app \
+ && addgroup --system app \
  && adduser --system --ingroup app app
 
-# define diretórios de trabalho
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 
+# cria diretórios de estáticos e mídia
 RUN mkdir -p $APP_HOME/staticfiles \
  && mkdir -p $APP_HOME/mediafiles
 
 WORKDIR $APP_HOME
 
-# install runtime dependencies
+# instala runtime deps, incluindo cliente Postgres e sqlite3
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       netcat \
+      postgresql-client \
+      sqlite3 \
+      libsqlite3-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# copia e instala as wheels geradas no builder
+# copia e instala as wheels
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip \
  && pip install --no-cache /wheels/*
 
-# copia e prepara o entrypoint
+# entrypoint
 COPY entrypoint.sh .
-RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh \
- && chmod +x $APP_HOME/entrypoint.sh
+RUN sed -i 's/\r$//g' entrypoint.sh \
+ && chmod +x entrypoint.sh
 
-# copia todo o código da aplicação
+# código da aplicação
 COPY . .
 
-# ajusta permissões
+# permissões
 RUN chown -R app:app $APP_HOME
 
-# executa como usuário não-root
+# troca para usuário app
 USER app
 
 # entrypoint final

@@ -106,13 +106,14 @@ TEMPLATES = [
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = "/home/app/web/staticfiles"
+
 # WhiteNoise settings para evitar cache
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Defina a URL base para servir arquivos de mídia 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_ROOT  = "/home/app/web/mediafiles"
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

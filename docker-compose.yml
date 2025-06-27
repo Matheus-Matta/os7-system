@@ -4,32 +4,18 @@ services:
   web:
     build: .
     entrypoint: ["sh", "/home/app/web/entrypoint.sh"]
-    healthcheck:
-      test: ["CMD", "sh", "-c", "test -f /home/app/web/staticfiles/admin/css/base.css"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
     command: >
       gunicorn config.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/media
+      - media_volume:/home/app/web/mediafiles
     expose:
       - 8000
     env_file:
       - .env
-    depends_on:
-      db:
-        condition: service_healthy
 
   db:
     image: postgres:15
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
-      start_period: 5s
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
@@ -37,13 +23,10 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/media
+      - static_volume:/home/app/web/staticfiles:ro
+      - media_volume:/home/app/web/mediafiles:ro
     ports:
       - 1337:80
-    depends_on:
-      web:
-        condition: service_healthy
 
 volumes:
   postgres_data:
