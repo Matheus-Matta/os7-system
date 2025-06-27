@@ -215,7 +215,7 @@ UNFOLD = {
                     {
                         "title": _("Configurações do Site"),
                         "icon": "settings",
-                        "link": reverse_lazy("admin:config_siteconfig_changelist"),
+                        "link": reverse_lazy("admin:siteconfig_siteconfig_changelist"),
                         "permission": lambda request: request.user.is_superuser,
                     },
                 ],
